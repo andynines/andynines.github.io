@@ -7,6 +7,31 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="styles.css">
       <link rel="shortcut icon" href="favicon.ico"  type="image/x-icon">
+      <script defer>
+         function rot47(x) {
+            let s = [];
+            for (let i = 0; i < x.length; i++) {
+               let j = x.charCodeAt(i);
+               if ((j >= 33) && (j <= 126)) {
+                  s[i] = String.fromCharCode(33 + ((j + 14) % 94));
+               } else {
+                  s[i] = String.fromCharCode(j);
+               }
+            }
+            return s.join('');
+         }
+         
+         const myEmailAddress = rot47(">2:=E@i2?5C6Ho2?5C6HD6?:?]4@>");
+         window.addEventListener("load", () => {
+            const emailLink = document.getElementById("email-link");
+            emailLink.addEventListener("mouseover", (_) => {
+               emailLink.href = myEmailAddress;
+            });
+            emailLink.addEventListener("mouseleave", (_) => {
+               emailLink.removeAttribute("href");
+            });
+         });
+      </script>
    </head>
    <body>
       <header class="site-header" role="banner">
@@ -21,7 +46,7 @@
                   <h2>Hi,</h2>
                   <p>I'm Andrew, a software developer from Philadelphia, PA. Currently I work on automated trading technology at <a href="https://sig.com">SIG</a>. I recently graduated with an M.S. in computer science from <a href="https://drexel.edu/cci/">Drexel University</a>. Outside of work, I like to run, write, and make vaguely musical noises with my piano.</p>
                   <ul>
-                     <li><a href="mailto:andrew@andrewsenin.com">Email</a></li>
+                     <li><a id="email-link" style="cursor: pointer">Email</a></li>
                      <li><a href="https://github.com/andynines">GitHub</a></li>
                      <li><a href="https://www.linkedin.com/in/andrew-senin">LinkedIn</a></li>
                   </ul>
