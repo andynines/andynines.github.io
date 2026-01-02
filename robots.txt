@@ -1,2 +1,4 @@
 User-agent: *
-Disallow: /extras/
+Disallow: /definition.html
+Disallow: /song.mp3
+Disallow: /playlist.html
